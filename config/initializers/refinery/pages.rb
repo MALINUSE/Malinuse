@@ -9,7 +9,10 @@ Refinery::Pages.configure do |config|
   # config.default_parts = ["Body", "Side Body"]
 
   # Configure whether to allow adding new page parts
-  # config.new_page_parts = false
+   config.new_page_parts = true
+
+   # CSS class selectors for menu helper
+   config.menu_css = {:selected => "active", :first => "first", :last => "last"}
 
   # Configure whether to enable marketable_urls
   # config.marketable_urls = true
