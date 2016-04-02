@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  port: 5432
+  username: <%= ENV["USER" ] %>
+  password: <%= ENV["DATABASE_PASSWORD" ] %>
+
+development:
+  <<: *default
+  database: malinuse_development
+  host: localhost
+
+test:
+  <<: *default
+  database: malinuse_test
+
+staging:
+  <<: *default
+  database: malinuse_staging
+
+production:
+  <<: *default
+  database: malinuse_production
