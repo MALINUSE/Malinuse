@@ -6,7 +6,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :permalink
       t.integer :position
       t.boolean :visible, :default => false
-      t.references :user, index: true, foreign_key: true
+      #t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

@@ -22,14 +22,12 @@ ActiveRecord::Schema.define(version: 20160402232025) do
     t.string   "permalink"
     t.integer  "position"
     t.boolean  "visible",    default: false
-    t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
   add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
   add_index "pages", ["subject_id"], name: "index_pages_on_subject_id", using: :btree
-  add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
 
   create_table "pages_users", id: false, force: :cascade do |t|
     t.integer "page_id"
@@ -57,13 +55,11 @@ ActiveRecord::Schema.define(version: 20160402232025) do
     t.boolean  "visible",      default: false
     t.string   "content_type"
     t.text     "content"
-    t.integer  "user_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
 
   add_index "sections", ["page_id"], name: "index_sections_on_page_id", using: :btree
-  add_index "sections", ["user_id"], name: "index_sections_on_user_id", using: :btree
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
@@ -100,12 +96,10 @@ ActiveRecord::Schema.define(version: 20160402232025) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "pages", "subjects"
-  add_foreign_key "pages", "users"
   add_foreign_key "pages_users", "pages"
   add_foreign_key "pages_users", "users"
   add_foreign_key "section_edits", "sections"
   add_foreign_key "section_edits", "users"
   add_foreign_key "sections", "pages"
-  add_foreign_key "sections", "users"
   add_foreign_key "subjects", "users"
 end
