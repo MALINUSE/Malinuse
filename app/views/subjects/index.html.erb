@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead class="thead-default">
+  <tr>
+    <th>#</th>
+    <th>Subject</th>
+    <th>Visible</th>
+    <th>Pages</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @subjects.each do |subject| %>
+  <tr>
+    <th scope="row"><%= subject.position %></th>
+    <td><%= subject.name %></td>
+    <td><%= subject.visible %></td>
+    <td><%= subject.pages.size %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
