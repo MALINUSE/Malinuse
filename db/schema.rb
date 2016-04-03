@@ -73,22 +73,22 @@ ActiveRecord::Schema.define(version: 20160402232025) do
   add_index "subjects", ["user_id"], name: "index_subjects_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "username",               limit: 25,              null: false
+    t.string   "nom",                    limit: 40
+    t.string   "prenom",                 limit: 50
+    t.string   "role",                   limit: 25
+    t.string   "email",                             default: "", null: false
+    t.string   "encrypted_password",                default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                     default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "username"
-    t.string   "nom"
-    t.string   "prenom"
-    t.string   "role"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
