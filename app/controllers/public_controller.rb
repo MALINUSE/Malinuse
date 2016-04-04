@@ -1,6 +1,8 @@
 class PublicController < ApplicationController
 
-  layout 'public'
+  layout "public"
+
+  before_action :setup_navigation
 
   def index
     # intro text
