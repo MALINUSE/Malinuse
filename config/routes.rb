@@ -3,19 +3,27 @@ Rails.application.routes.draw do
   root 'public#index'
   get 'show/:permalink', :to => 'public#show'
 
-  devise_for :users, path_names: {
-      sign_in: 'login',
-      sign_out: 'logout',
-      password: 'secret',
-      confirmation: 'verification',
-      unlock: 'unblock',
-      sign_up: 'register'
-  }
+  devise_for :users,
+             controllers: {
+                 registrations: 'users/registrations',
+                 sessions: 'users/sessions',
+                 passwords: 'users/passwords'
+             },
+             path_names: {
+                 sign_up: 'register',
+                 sign_in: 'login',
+                 sign_out: 'logout',
+                 password: 'secret',
+                 confirmation: 'verification',
+                 unlock: 'unblock'
+             }
 
   resources :subjects do
-    resources :pages do
-      resources :sections
-    end
+    resources :pages
+  end
+
+  resources :pages do
+    resources :sections
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

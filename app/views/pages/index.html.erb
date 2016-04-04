@@ -1,2 +1,43 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+
+
+<%= link_to("<< Back to Subjects", subjects_path) %>
+
+
+<div class="sections index">
+  <h2>Pages</h2>
+
+  <%= link_to("Add New Page", new_subject_page_path(@subject.id)) %>
+
+  <table class="table table-striped table-hover table-condensed">
+  <thead class="thead-default">
+  <tr>
+    <th>#</th>
+    <th>Subject</th>
+    <th>Page</th>
+    <th>Permalink</th>
+    <th>Visible</th>
+    <th>Sections</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @pages.each do |page| %>
+      <tr>
+        <th scope="row"><%= page.position %></th>
+        <td><%= page.subject.name if page.subject %></td>
+        <td><%= page.name %></td>
+        <td><%= page.permalink %></td>
+        <td class="center"><%= page.visible %></td>
+        <td class="center"><%= page.sections.size %></td>
+        <td>
+          <%= link_to(' Sections', page_sections_path(page), :class => "btn btn-info glyphicon glyphicon-attach glyphiconcontent") %>
+          <%= link_to 'Show', subject_page_path(@subject, page), :class => "btn btn-info glyphicon glyphicon-attach glyphiconcontent" %>
+          <%= link_to '', edit_subject_page_path(@subject, page), :class => "btn btn-info glyphicon glyphicon-pencil glyphiconcontent" %>
+          <%= link_to '', [@subject, page], method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger glyphicon glyphicon-trash glyphiconcontent" %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+</div>

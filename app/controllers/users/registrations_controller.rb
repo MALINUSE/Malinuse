@@ -10,6 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   # def create
   #   super
+  #   @user = User.new(configure_sign_up_params)
+  #   if @user.save
+  #     flash[:notice] = "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."
+  #     redirect_to root_url
+  #   else
+  #     render :action => :new
+  #   end
   # end
 
   # GET /resource/edit
@@ -40,7 +47,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
+  #   #devise_parameter_sanitizer.for(:sign_up) << :attribute
+  #   devise_parameter_sanitizer.for(:sign_up) << [:nom, :prenom, :username, :email, :password, :password_confirmation, :role]
   # end
 
   # If you have extra params to permit, append them to the sanitizer.

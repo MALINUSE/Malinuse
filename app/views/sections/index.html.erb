@@ -1,2 +1,37 @@
-<h1>Sections#index</h1>
-<p>Find me in app/views/sections/index.html.erb</p>
+<%= link_to("<< Back to Pages", subject_pages_path(@page.subject_id)) %>
+
+<div class="sections index">
+  <h2>Sections</h2>
+
+  <%= link_to("Add New Section", new_page_section_path( @page.id)) %>
+
+  <table class="table table-striped table-hover table-condensed">
+    <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Page</th>
+      <th>Section</th>
+      <th>Content</th>
+      <th>Visible</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @sections.each do |section| %>
+        <tr>
+          <th scope="row"><%= section.position %></th>
+          <td><%= section.page.name if section.page %></td>
+          <td><%= section.name %></td>
+          <td><%= section.content_type %></td>
+          <td class="center"><%= section.visible %></td>
+          <td>
+            <%= link_to 'Show', page_section_path(section.page.id, section), :class => "btn btn-info glyphicon glyphicon-attach glyphiconcontent" %>
+            <%= link_to '', edit_page_section_path(section.page.id, section), :class => "btn btn-info glyphicon glyphicon-pencil glyphiconcontent" %>
+            <%= link_to '', [section.page, section], method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger glyphicon glyphicon-trash glyphiconcontent" %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>
