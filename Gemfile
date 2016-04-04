@@ -32,10 +32,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-passenger'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'quiet_assets', '~> 1.0.3'
+  gem 'better_errors', '~> 2.0.0'
+  gem 'binding_of_caller'
 end
 
 group :development do
@@ -51,3 +57,8 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'cancancan', '~> 1.10'
 
+gem 'font-awesome-sass', '~> 4.5.0'
+gem 'bootstrap_form', '~> 2.3.0'
+gem 'bh', '~> 1.3.4'
+
+# gem 'paperclip', '~> 4.3'
