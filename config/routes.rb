@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'public#index'
-  get 'show/:permalink', :to => 'public#show'
+  get 'show/:id', :to => 'public#show'
 
   devise_for :users,
              controllers: {

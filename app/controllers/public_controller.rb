@@ -9,7 +9,7 @@ class PublicController < ApplicationController
   end
 
   def show
-    @page = Page.where(:permalink => params[:permalink], :visible => true).first
+    @page = Page.where(:visible => true).friendly.find(params[:id])
     if @page.nil?
       redirect_to(:action => 'index')
     else

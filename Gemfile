@@ -62,3 +62,5 @@ gem 'bootstrap_form', '~> 2.3.0'
 gem 'bh', '~> 1.3.4'
 
 # gem 'paperclip', '~> 4.3'
+
+gem 'friendly_id', '~> 5.1'

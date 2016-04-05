@@ -58,7 +58,7 @@ class PagesController < ApplicationController
   private
 
   def set_page
-    @page = Page.find(params[:id])
+    @page = Page.friendly.find(params[:id])
   end
 
   def find_subject
@@ -68,7 +68,7 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:subject_id, :name, :permalink, :position, :visible)
+    params.require(:page).permit(:subject_id, :name, :slug, :position, :visible)
   end
 
 end
