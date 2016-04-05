@@ -3,7 +3,7 @@ class Section < ActiveRecord::Base
   has_many :section_edits
   has_many :editors, :through => :section_edits, :class_name => "User"
 
-  #acts_as_list :scope => :page
+  acts_as_list :scope => :page
 
   after_save :touch_page
 

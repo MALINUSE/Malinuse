@@ -64,3 +64,5 @@ gem 'bh', '~> 1.3.4'
 # gem 'paperclip', '~> 4.3'
 
 gem 'friendly_id', '~> 5.1'
+
+gem 'acts_as_list', '~> 0.7.2'

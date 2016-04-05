@@ -1,7 +1,7 @@
 class Subject < ActiveRecord::Base
   has_many :pages, :dependent => :destroy
 
-  #acts_as_list
+  acts_as_list
 
   # Don't need to validate (in most cases):
   #   ids, foreign keys, timestamps, booleans, counters

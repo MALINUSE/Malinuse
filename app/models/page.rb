@@ -6,7 +6,7 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  #acts_as_list :scope => :subject
+  acts_as_list :scope => :subject
 
   #before_validation :add_default_permalink
   after_save :touch_subject

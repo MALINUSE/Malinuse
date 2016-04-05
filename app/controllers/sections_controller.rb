@@ -58,7 +58,7 @@ class SectionsController < ApplicationController
 
   def find_page
     if params[:page_id]
-      @page = Page.find(params[:page_id])
+      @page = Page.friendly.find(params[:page_id])
     end
   end
 
