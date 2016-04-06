@@ -1,23 +1,34 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
+ before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  #   @user = User.new(configure_sign_up_params)
-  #   if @user.save
-  #     flash[:notice] = "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."
-  #     redirect_to root_url
-  #   else
-  #     render :action => :new
-  #   end
-  # end
+  def create
+    build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message :success, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message :success, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -46,10 +57,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   #devise_parameter_sanitizer.for(:sign_up) << :attribute
-  #   devise_parameter_sanitizer.for(:sign_up) << [:nom, :prenom, :username, :email, :password, :password_confirmation, :role]
-  # end
+  def configure_sign_up_params
+    #devise_parameter_sanitizer.for(:sign_up) << :attribute
+    devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:nom, :prenom, :username, :email, :password, :password_confirmation)}
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
