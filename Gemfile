@@ -8,6 +8,12 @@ gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
+gem 'font-awesome-sass', '~> 4.5.0'
+gem 'bootstrap_form', '~> 2.3.0'
+gem 'bh', '~> 1.3.4'
+#gem 'bootstrap-wysihtml5-rails', github: 'nerian/bootstrap-wysihtml5-rails'
+#gem 'bootstrap-wysihtml5-rails'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -57,9 +63,6 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'cancancan', '~> 1.10'
 
-gem 'font-awesome-sass', '~> 4.5.0'
-gem 'bootstrap_form', '~> 2.3.0'
-gem 'bh', '~> 1.3.4'
 
 # gem 'paperclip', '~> 4.3'
 
